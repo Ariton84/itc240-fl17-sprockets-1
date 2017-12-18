@@ -6,7 +6,7 @@
     
 $iConn = @mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME) or die(myerror(__FILE__,__LINE__,mysqli_connect_error()));
 
-$sql = "select * from Mangas";      //important to remember
+$sql = "select * from Manga";      //important to remember
 $myPager = new Pager (10, '',$prev,$next,'');
 $sql = $myPager->loadSQL($sql,$iConn); #load SQL, pass in existin connections, add offset
 

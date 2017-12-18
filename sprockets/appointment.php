@@ -7,7 +7,7 @@
 <?php
 
 //Point this to the clients email when done   
-$to = 'will@wfdesings.com';
+$to = 'vanver@gmail.com';
 
 if (isset($_POST["FirstName"])) {
     //if data show
