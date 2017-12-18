@@ -28,8 +28,8 @@ if(mysqli_num_rows($result) > 0)
     while($row = mysqli_fetch_assoc($result))
     {
         $Title = stripslashes($row['Title']);
-        $Publisher = stripslashes($row['Genre']);
-        $Issue = stripslashes($row['Author']);
+        $Genre = stripslashes($row['Genre']);
+        $Author = stripslashes($row['Author']);
         $title = "Title Page for " . $Title;
         $pageID = $Title;
         $Feedback = '';//no feedback necessary
