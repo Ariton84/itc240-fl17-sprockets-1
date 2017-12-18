@@ -1,59 +1,58 @@
 <?php include 'includes/config.php'?>
-<?php include 'includes/header.php'?>
-        <hr class="divider">
-        <h2 class="text-center text-lg text-uppercase my-0">Contact
-          <strong>Form</strong>
-        </h2>
-        <hr class="divider">
+<?php get_header()?>
+<hr class="divider">
+    <h2 class="text-center text-lg text-uppercase my-0"><?=$config->pageID?></strong>
+    </h2>
+<hr class="divider">
 <?php
 
-//POINT THIS TO CLIENTS EMAIL WHEN DONE!
-$to = 'vanver@gmail.com';
+//Point this to the clients email when done   
+$to = 'will@wfdesings.com';
+
+if (isset($_POST["FirstName"])) {
+    //if data show
     
-if(isset($_POST["FirstName"]))
-{//if data, show it
     
-    
-    $firstName = clean_post('FirstName');
-    $lastName = clean_post('LastName');
+    $FirstName = clean_post('FirstName');
+    $LastName = clean_post('LastName');
     $Email = clean_post('Email');
     //$Comments = clean_post('Comments');
-   
+    
     $myText = process_post();
     
     /*
-    $myText .= "The user has entered their information as follows:" . PHP_EOL . PHP_EOL; //double newlines 
-    $myText .= $firstName . " " . $lastName . PHP_EOL;
+    $myText = "The user has entered their information as follows:" . PHP_EOL . PHP_EOL; //double newlines 
+    $myText .= $FirstName . " " . $LastName . PHP_EOL;
     $myText .= $Comments . PHP_EOL;
     */
     
-    //$subject = 'ITC240 Contact Page';
-    $subject = "ITC240 contact from " . $FirstName . " " . $LastName . " " . date("m/d/y, G:i:s");
-        
-    $headers = 'From: noreply@vanverbrown.com' . PHP_EOL .
+    $subject = "ITC240 Contact From " . $FirstName . " " . $LastName . " " . date("m/d/y, G:i:s");
+    $headers = 'From: noreply@wfdesings.com' . PHP_EOL .
         'Reply-To: ' . $Email . PHP_EOL .
         'X-Mailer: PHP/' . phpversion();
 
     mail($to, $subject, $myText, $headers);
-        
-    echo '
-    <h4>Your Message was Successfully Sent!</h4>
-    <p>We\'ll get back to you within 48 hours</p>
-    <p><a href="">Exit</a></p>
-    ';
-
-}else{//show form
-    /*
     
+    echo '
+        <h4>Your message was sent!</h4>
+        <p>We\'ll get back to you within 48 hours.</p>
+        <p><a href="">Exit</a></p>
+    ';
+    
+} else {
+    //show form
+    
+    
+    /*
     Radio buttons
     
-    Appointment Type
+    appontment type
     
 	Intake
 	Degree Audit
 	Registration
 
-	Checkboxes
+    Checkboxes
     
     Special Requests
     
@@ -61,12 +60,9 @@ if(isset($_POST["FirstName"]))
 	Early Morning
 	Official Transcript
 
-    Appointment Date
-    
     */
     echo '
         <form action="" method="post">
-        <form>
           <div class="row">
             <div class="form-group col-lg-4">
               <label class="text-heading">First Name</label>
@@ -82,19 +78,20 @@ if(isset($_POST["FirstName"]))
             </div>
             <div class="clearfix"></div>
             <div class="form-group col-lg-4">
-              <label class="text-heading">Appointment Type</label>
+              <label class="text-heading">Appointment Type</label><br />
               <input type="radio" name="Appointment_Type" value="Intake" /> Intake <br />
               <input type="radio" name="Appointment_Type" value="Degree Audit" /> Degree Audit <br />
               <input type="radio" name="Appointment_Type" value="Registration" /> Registration <br />
             </div>
+            
             <div class="form-group col-lg-4">
-              <label class="text-heading">Special Requests</label>
-              <input type="checkbox" name="Special_Requests[]" value="Online Meeting" /> Online Meeting <br />
-              <input type="checkbox" name="Special_Requests[]" value="Early Morning" /> Early Morning <br />
-              <input type="checkbox" name="Special_Requests[]" value="Official Transcript" /> Official Transcript <br />
+              <label class="text-heading">Speicial Requests</label><br />
+              <input type="checkbox" name="Speicial_Request[]" value="Online Meeing" /> Online Meeing <br />
+              <input type="checkbox" name="Speicial_Request[]" value="Early Morning" /> Early Morning <br />
+              <input type="checkbox" name="Speicial_Request[]" value="Official Transcript" /> Official Transcript <br />
             </div>
             <div class="form-group col-lg-4">
-              <label class="text-heading">Appointment Date/Time</label>
+              <label class="text-heading">Appointment Date/Time</label><br />
               <input type="date" name="Appointment_Time" required class="form-control">
             </div>
             <div class="clearfix"></div>
@@ -109,17 +106,24 @@ if(isset($_POST["FirstName"]))
         </form>
     ';
 }
-?>    
+
+?>
+
 <?php 
 
-include 'includes/footer.php';
+get_footer()?>
+
+<?php
 function clean_post($key){
+    
     if(isset($_POST[$key])){
-        return strip_tags(trim($_POST[$key]));
-    }else{
-        return '';
-    }
+           return strip_tags(trim($_POST[$key]));
+       }else{
+           return '';
+       }
+    
 }
+
 function process_post()
 {//loop through POST vars and return a single string
     $myReturn = ''; //set to initial empty value
@@ -135,4 +139,5 @@ function process_post()
          }
     }
     return $myReturn;
-} 
+}
+?>
