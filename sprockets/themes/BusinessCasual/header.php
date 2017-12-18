@@ -42,7 +42,7 @@
               </a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="comics.php">Comics</a>
+              <a class="nav-link text-uppercase text-expanded" href="manga.php">Manga</a>
             </li>
             <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="appointment.php">Appointment</a>
