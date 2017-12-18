@@ -64,7 +64,7 @@ switch(THIS_PAGE){
         $config->title = 'Home';
         $config->pageID = 'Home';
     break;
-    case 'comics.php':
+    case 'manga.php':
         $config->title = 'Manga';
         $config->pageID = 'Manga Information';
     break;
