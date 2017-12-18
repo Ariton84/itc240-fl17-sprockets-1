@@ -1,5 +1,5 @@
 <?php include 'includes/config.php'?>
-<?php include 'includes/Pager.php'?>
+<?php include 'includes/pager.php'?>
 <?php get_header()?>
 <h3><?=$config->pageID?></h3>
 <?php
@@ -20,8 +20,8 @@ if (mysqli_num_rows($result) > 0)//at least one record!
 	   echo "<p>";
 	   echo 'Title: <b><a href="manga_view.php?id=' . $row['MangaID'] . '">' . $row['Title'] . '</a></b>';
        echo '<br>';
-	   echo "Publisher: <b>" . $row['Publisher'] . "</b><br />";
-	   echo "Issue: <b>" . $row['Issue'] . "</b><br />";
+	   echo "Genre: <b>" . $row['Genre'] . "</b><br />";
+	   echo "Author: <b>" . $row['Author'] . "</b><br />";
 	   /*echo "Discription: <b>" . $row['Discription'] . "</b><br />";*/
 	   echo "</p>";
         };

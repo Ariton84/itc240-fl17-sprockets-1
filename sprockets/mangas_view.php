@@ -28,8 +28,8 @@ if(mysqli_num_rows($result) > 0)
     while($row = mysqli_fetch_assoc($result))
     {
         $Title = stripslashes($row['Title']);
-        $Publisher = stripslashes($row['Publisher']);
-        $Issue = stripslashes($row['Issue']);
+        $Publisher = stripslashes($row['Genre']);
+        $Issue = stripslashes($row['Author']);
         $title = "Title Page for " . $Title;
         $pageID = $Title;
         $Feedback = '';//no feedback necessary
@@ -49,8 +49,8 @@ if($Feedback == '')
 
     echo '<p>';
     echo 'Title: <b>' . $Title . '</b> ';
-    echo 'Publisher: <b>' . $Publisher . '</b> ';
-    echo 'Issue: <b>' . $Issue . '</b> ';
+    echo 'Genre: <b>' . $Genre . '</b> ';
+    echo 'Author: <b>' . $Author . '</b> ';
     
     echo '<img src="uploads/customer' . $id . '.jpg" />';
     
